@@ -9,10 +9,21 @@ on:
   pull_request:
     branches: [ master ]
 
+
 jobs:
   build:
 
     runs-on: ubuntu-latest
+    
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+
+    strategy:
+      fail-fast: false
+      matrix:
+        language: [ 'java' ]
 
     steps:
     - uses: actions/checkout@v2
